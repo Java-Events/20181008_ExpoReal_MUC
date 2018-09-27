@@ -72,9 +72,12 @@ public class AppRunner {
 
 
   private static Function<Integer, ElevatorStatus> toStatus() {
-    return (i) -> match(matchCase(() -> failure("no status")), matchCase(() -> i == 0, () -> success(GREEN)),
-                        matchCase(() -> i == 1, () -> success(YELLOW)), matchCase(() -> i == 2, () -> success(RED))
-                       ).get();
+    return (i) -> match(
+        matchCase(() -> failure("no status")),
+        matchCase(() -> i == 0, () -> success(GREEN)),
+        matchCase(() -> i == 1, () -> success(YELLOW)),
+        matchCase(() -> i == 2, () -> success(RED)))
+        .get();
   }
 
   private static void createRandomData() {
